@@ -34,7 +34,7 @@ contract Department{
   function get_members()returns (address[]){
     return members;
   }
-  function get_my_subsription() returns(address){
+  function get_my_subscription() returns(address){
     return   geojson_contracts[msg.sender];
   }
   function set_admin_status(address _member,uint _admin_status)returns(bool _success){
