@@ -1,4 +1,4 @@
-module.exports = function(de  deployer.deploy(Profile);ployer) {
+module.exports = function(deployer) {
   deployer.deploy(ArrayUtils);
   deployer.deploy(GeoJson);
   deployer.deploy(Profile);
