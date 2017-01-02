@@ -1,7 +1,11 @@
 module.exports = function(deployer) {
   deployer.deploy(ArrayUtils);
-  deployer.autolink();
   deployer.deploy(Profile);
-  deployer.autolink();
   deployer.deploy(Department);
+  deployer.autolink();
+  deployer.then(function(){
+    var d = Department.deployed();
+    d.set_profile_contract(Profile.address);
+    console.log(Department.deployed())
+  });
 };
