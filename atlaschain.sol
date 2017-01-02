@@ -1,6 +1,6 @@
 pragma solidity ^0.4.0;
-import "profile.sol";
-import "geojson.sol";
+import "Profile.sol";
+import "GeoJson.sol";
 import "ArrayUtils.sol";
 contract Department{
   address creator;
@@ -40,7 +40,7 @@ contract Department{
   }
   function remove_member(address _member) returns (bool){
     if (admins[msg.sender] == 1){
-      ArrayUtils.RemoveByValue(members, member);
+      ArrayUtils.RemoveByValue(members, _member);
         admins[_member] = 0;
     }
     else{
