@@ -60,7 +60,7 @@ contract Department{
   function remove_member(address _member) returns (bool){
     if (admins[msg.sender] == 1){
       admins[_member] = 0;
-      uint index = members.IndexOf( _member);
+      uint index =0;// members.IndexOf( _member);
       if(index == uint(-1))
       return false;
       delete members[index];
