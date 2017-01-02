@@ -1,16 +1,7 @@
 pragma solidity ^0.4.0;
-contract GeoJson{
-  address creator;
-
-  string[] geojson;
-  function GeoJson(){
-    creator = msg.sender;
-  }
-  function add_json_datum(string data)returns (uint){
-    return geojson.push(data);
-  }
-}
-
+import "profile.sol";
+import "geojson.sol";
+import "ArrayUtils.sol";
 contract Department{
   address creator;
   address[] members;
@@ -24,6 +15,7 @@ contract Department{
     if (admins[msg.sender] == 1){
       address geo_contract = new GeoJson();
       geojson_contracts[_member] = geo_contract;
+      Profile.add_subscription(_member, geo_contract);
       return members.push(_member);
     }
     else{
@@ -41,6 +33,15 @@ contract Department{
     if (admins[msg.sender] == 1){
       admins[_member] = _admin_status;
       return true;
+    }
+    else{
+      return false;
+    }
+  }
+  function remove_member(address _member) returns (bool){
+    if (admins[msg.sender] == 1){
+      ArrayUtils.RemoveByValue(members, member);
+        admins[_member] = 0;
     }
     else{
       return false;
