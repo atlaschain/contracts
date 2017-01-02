@@ -2,7 +2,7 @@ pragma solidity ^0.4.0;
 contract GeoJson{
   address creator;
 
-  string[] geojson;
+  string[] public geojson;
   function GeoJson(){
     creator = msg.sender;
   }

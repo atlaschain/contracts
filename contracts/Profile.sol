@@ -28,12 +28,13 @@ contract Profile{
     return profiles[_user].subscriptions;
   }
 
+  /*Doesnt work TODO*/
   function remove_subscription(address _subscription, address _user){
-    uint index = ArrayUtils.IndexOf(profiles[_user].subscriptions, _subscription);
+    /*uint index = ArrayUtils.IndexOf(profiles[_user].subscriptions, _subscription);
     while (index < profiles[_user].subscriptions.length-1) {
       profiles[_user].subscriptions[index] = profiles[_user].subscriptions[index + 1];
       index++;
     }
-    profiles[_user].subscriptions.length-- ;
+    profiles[_user].subscriptions.length-- ;*/
   }
 }
