@@ -7,6 +7,7 @@ contract Department{
   address[] members;
   mapping(address => uint)  admins;
   mapping(address => address) geojson_contracts;
+  Profile profiles;
   function Department(){
     creator = msg.sender;
     admins[creator] = 1;
@@ -15,7 +16,7 @@ contract Department{
     if (admins[msg.sender] == 1){
       address geo_contract = new GeoJson();
       geojson_contracts[_member] = geo_contract;
-      Profile.add_subscription(_member, geo_contract);
+      uint subscription_count =  profiles.add_subscription(_member, geo_contract);
       return members.push(_member);
     }
     else{
@@ -40,7 +41,6 @@ contract Department{
   }
   function remove_member(address _member) returns (bool){
     if (admins[msg.sender] == 1){
-      ArrayUtils.RemoveByValue(members, _member);
         admins[_member] = 0;
     }
     else{
