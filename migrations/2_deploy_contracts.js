@@ -1,5 +1,6 @@
-module.exports = function(deployer) {
+module.exports = function(de  deployer.deploy(Profile);ployer) {
   deployer.deploy(ArrayUtils);
+  deployer.deploy(GeoJson);
   deployer.deploy(Profile);
   deployer.deploy(Department);
   deployer.autolink();
