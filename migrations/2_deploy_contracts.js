@@ -1,5 +1,6 @@
 module.exports = function(deployer) {
   deployer.deploy(ArrayUtils);
+  deployer.deploy(mortal);
   deployer.deploy(GeoJson);
   deployer.deploy(Profile);
   deployer.deploy(Department);
