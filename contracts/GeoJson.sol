@@ -9,4 +9,8 @@ contract GeoJson{
   function add_json_datum(string data)returns (uint){
     return geojson.push(data);
   }
+  
+  function geojson_count() returns(uint){
+    return geojson.length;
+  }
 }
