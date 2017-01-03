@@ -55,17 +55,25 @@ contract Department{
       return false;
     }
   }
+  function indexOf(address _x)returns (uint){
+    for (uint i = 0; i < members.length; i++)
+    if (members[i] == _x) return i;
+    return uint(-1);
+  }
 
-  /*doesnt work TODO*/
   function remove_member(address _member) returns (bool){
+
     if (admins[msg.sender] == 1){
       admins[_member] = 0;
-      uint index =0;// members.IndexOf( _member);
+      uint index =indexOf( _member);
       if(index == uint(-1))
       return false;
+      profiles.remove_subscription(geojson_contracts[_member], _member);
+      GeoJson(geojson_contracts[_member]).kill();
+      delete geojson_contracts[_member];
+      admins[_member] = 0;
       delete members[index];
       return true;
-      /*members.length--;*/
     }
     else{
       return false;

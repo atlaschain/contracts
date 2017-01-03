@@ -1,5 +1,7 @@
 pragma solidity ^0.4.0;
-contract GeoJson{
+import "mortal.sol";
+
+contract GeoJson is mortal{
   address creator;
 
   string[] public geojson;
@@ -9,8 +11,9 @@ contract GeoJson{
   function add_json_datum(string data)returns (uint){
     return geojson.push(data);
   }
-  
+
   function geojson_count() returns(uint){
     return geojson.length;
   }
+  
 }

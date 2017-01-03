@@ -16,6 +16,7 @@ contract Profile{
     return profiles[_user].subscriptions.push(_subscription);
   }
 
+
   function name(address _user) returns(string _name){
     return profiles[_user].name;
   }
@@ -28,13 +29,17 @@ contract Profile{
     return profiles[_user].subscriptions;
   }
 
+  function indexOf(address[] values, address _x)returns (uint){
+    for (uint i = 0; i < values.length; i++)
+    if (values[i] == _x) return i;
+    return uint(-1);
+  }
   /*Doesnt work TODO*/
-  function remove_subscription(address _subscription, address _user){
-    /*uint index = ArrayUtils.IndexOf(profiles[_user].subscriptions, _subscription);
-    while (index < profiles[_user].subscriptions.length-1) {
-      profiles[_user].subscriptions[index] = profiles[_user].subscriptions[index + 1];
-      index++;
-    }
-    profiles[_user].subscriptions.length-- ;*/
+  function remove_subscription(address _subscription, address _user)returns(bool){
+    uint index = indexOf(profiles[_user].subscriptions, _subscription);
+    if(index == uint(-1))
+    return false;
+    delete profiles[_user].subscriptions[index];
+    return true;
   }
 }
