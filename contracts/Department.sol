@@ -6,14 +6,18 @@ contract Department{
   using ArrayUtils for address[];
   address creator;
   address[] members;
+  string name;
   mapping(address => uint)  admins;
   mapping(address => address) geojson_contracts;
   Profile profiles;
-  function Department( ){
+  function Department(string _name ){
     creator = msg.sender;
     admins[creator] = 1;
+    name = _name;
   }
-
+  function get_name() returns(string){
+    return name;
+  }
   function profile_contract_address() returns(address){
     return profiles;
   }
@@ -28,6 +32,7 @@ contract Department{
       geojson_contracts[_member] = geo_contract;
       uint members_count = members.push(_member);
       uint subscription_count =  profiles.add_subscription(_member, geo_contract);
+      uint dept_count = profiles.add_department(_member, this);
       return members_count;
     }
     else{

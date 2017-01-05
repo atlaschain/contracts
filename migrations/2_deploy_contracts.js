@@ -3,7 +3,7 @@ module.exports = function(deployer) {
   deployer.deploy(mortal);
   deployer.deploy(GeoJson);
   deployer.deploy(Profile);
-  deployer.deploy(Department);
+  deployer.deploy(Department, "default");
   deployer.autolink();
   deployer.then(function(){
     var d = Department.deployed();
