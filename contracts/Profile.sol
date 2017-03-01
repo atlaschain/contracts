@@ -59,7 +59,6 @@ contract Profile{
         if (values[i] == _x) return i;
         return uint(-1);
       }
-      /*Doesnt work TODO*/
       function remove_subscription(address _subscription, address _user)returns(bool){
         uint index = indexOf(profiles[_user].subscriptions, _subscription);
         if(index == uint(-1))
